@@ -1,0 +1,22 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "TITLE",
+      "article": "ARTICLE",
+      "isPrivat": true
+    },
+    {
+      "id": 2,
+      "title": "title",
+      "article": "article",
+      "isPrivat": true
+    },
+    {
+      "id": 3,
+      "title": "Title",
+      "article": "Article",
+      "isPrivat": true
+    }
+  ]
+}
