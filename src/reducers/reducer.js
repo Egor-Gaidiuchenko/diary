@@ -1,6 +1,8 @@
 const initialState = {
+    loadingStatus: 'idle',
     notes: [],
-    private: 'all'
+    filter: 'all',
+    filtredNotes: []
 }
 
 const reducer = (state = initialState, action) => {
@@ -9,12 +11,43 @@ const reducer = (state = initialState, action) => {
         case 'NOTES_FETCHED':
             return {
                 ...state,
-                notes: action.payload
+                loadingStatus: 'idle',
+                notes: action.payload,
+                filtredNotes: state.filter === 'all' ?
+                              action.payload : 
+                              action.payload.filter(item => item.private === state.filter)
             }
         case 'NOTE_DELETED':
             return {
                 ...state,
-                notes: state.notes.filter(item => item.id !== action.payload)
+                loadingStatus: 'idle',
+                notes: state.notes.filter(item => item.id !== action.payload),
+                filtredNotes: state.filter === 'all' ?
+                              state.notes.filter(item => item.id !== action.payload) : 
+                              state.notes.filter(item => item.id !== action.payload && item.private === state.filter)
+            }
+        case 'NOTE_CREATED':
+            return {
+                ...state,
+                loadingStatus: 'idle',
+                notes: [...state.notes, action.payload],
+                filtredNotes: state.filter === 'all' ? 
+                              [...state.notes, action.payload] : 
+                              [...state.notes, action.payload].filter(item => item.private === state.filter)
+            }
+        case 'NOTES_FILTRED': 
+            return {
+                ...state,
+                loadingStatus: 'idle',
+                filter: action.payload,
+                filtredNotes: action.payload === 'all' ?
+                              state.notes : 
+                              state.notes.filter(item => item.private === action.payload)
+            }
+        case 'NOTES_LOADING': 
+            return {
+                ...state, 
+                loadingStatus: 'loading'
             }
         default: return state;
     }

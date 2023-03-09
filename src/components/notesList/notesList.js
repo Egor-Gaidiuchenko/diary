@@ -1,17 +1,19 @@
 import NotesItem from "../notesItem/notesItem";
 import { useHttp } from "../../hooks/useHttp";
-import { notesFetched, noteDeleted } from "../../actions/action"
+import { notesFetched, noteDeleted, notesLoading } from "../../actions/action"
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
+import Spinner from "../../spinner/Spinner"
 
 
 const NotesList = () => {
 
-    const {notes} = useSelector(state => state)
+    const {filtredNotes, loadingStatus} = useSelector(state => state)
     const request = useHttp();
     const dispatch = useDispatch();
 
     useEffect(() => {
+        dispatch(notesLoading())
         request("http://localhost:3001/notes")
             .then(data => dispatch(notesFetched(data)))
             .catch(() => console.log('error'))
@@ -21,7 +23,7 @@ const NotesList = () => {
 
     const onDelete = (id) => {
         request(`http://localhost:3001/notes/${id}`, 'DELETE')
-            .then(data => console.log(data))
+            .then(data => data)
             .then(dispatch(noteDeleted(id)))
     }
 
@@ -34,17 +36,18 @@ const NotesList = () => {
 
             return <NotesItem key={id} {...props} onDelete={() => onDelete(id)}/>
 
-        })
+        })        
     }
 
-    const elements = renderNotesList(notes) 
+    if (loadingStatus === 'loading') {
+        return <Spinner/>
+    }
 
-
+    const elements = renderNotesList(filtredNotes) 
 
     return (
         <ul>
             {elements}
-
         </ul>
     )
 }

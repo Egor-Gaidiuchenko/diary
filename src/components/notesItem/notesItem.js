@@ -1,6 +1,6 @@
 const NotesItem = ({title, article, onDelete}) => {
     return (
-        <li className={'card flex-row mb-4 shadow-lg text-white bg-secondary bg-gradient'}>
+        <li className={'card flex-row mb-4 shadow-lg text-white bg-dark bg-gradient'}>
             <div className="card-body">
                 <h3 className="card-title">{title}</h3>
                 <p className="card-text">{article}</p>

@@ -11,3 +11,23 @@ export const noteDeleted = (id) => {
         payload: id
     }
 }
+
+export const noteCreated = (newNote) => {
+    return {
+        type: 'NOTE_CREATED',
+        payload: newNote
+    }
+}
+
+export const notesFiltred = (filter) => {
+    return {
+        type: 'NOTES_FILTRED', 
+        payload: filter
+    }
+}
+
+export const notesLoading = () => {
+    return {
+        type: 'NOTES_LOADING'
+    }
+}
