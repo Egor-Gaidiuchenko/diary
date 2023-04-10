@@ -35,7 +35,7 @@ const NotesList = () => {
         return arr.map(({id, ...props}) => {
 
             return <NotesItem key={id} {...props} onDelete={() => onDelete(id)}/>
-
+            
         })        
     }
 

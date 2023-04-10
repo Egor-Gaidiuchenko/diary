@@ -1,6 +1,17 @@
-const NotesItem = ({title, article, onDelete}) => {
+const NotesItem = ({title, article, privat, onDelete}) => {
+    
+    let backgroundClass = ""
+
+    if (privat === "privat") {
+        backgroundClass = "bg-primary"
+    } else if (privat === "public") {
+        backgroundClass = "bg-danger"
+    } else if (privat === "friends") {
+        backgroundClass = "bg-secondary"
+    }
+
     return (
-        <li className={'card flex-row mb-4 shadow-lg text-white bg-dark bg-gradient'}>
+        <li className={`card flex-row mb-4 shadow-lg text-white bg-gradient ${backgroundClass}`}>
             <div className="card-body">
                 <h3 className="card-title">{title}</h3>
                 <p className="card-text">{article}</p>

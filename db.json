@@ -1,22 +1,3 @@
 {
-  "notes": [
-    {
-      "id": 1,
-      "title": "TITLE",
-      "article": "ARTICLE",
-      "private": "private"
-    },
-    {
-      "id": 2,
-      "title": "title",
-      "article": "article",
-      "private": "public"
-    },
-    {
-      "id": 3,
-      "title": "Title",
-      "article": "Article",
-      "private": "friends"
-    }
-  ]
+  "notes": []
 }

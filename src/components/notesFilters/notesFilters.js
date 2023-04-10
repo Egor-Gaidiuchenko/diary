@@ -11,7 +11,7 @@ const NotesFilters = () => {
                 <p className="card-text">Filter privat status</p>
                 <div className="btn-group">
                     <button className="btn btn-success" onClick={() => dispatch(notesFiltred('all'))}>All</button>
-                    <button className="btn btn-primary" onClick={() => dispatch(notesFiltred('private'))}>Private</button>
+                    <button className="btn btn-primary" onClick={() => dispatch(notesFiltred('privat'))}>Privat</button>
                     <button className="btn btn-danger" onClick={() => dispatch(notesFiltred('public'))}>Public</button>
                     <button className="btn btn-secondary" onClick={() => dispatch(notesFiltred('friends'))}>Friends</button>
                 </div>

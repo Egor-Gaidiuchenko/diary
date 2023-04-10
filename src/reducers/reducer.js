@@ -15,7 +15,7 @@ const reducer = (state = initialState, action) => {
                 notes: action.payload,
                 filtredNotes: state.filter === 'all' ?
                               action.payload : 
-                              action.payload.filter(item => item.private === state.filter)
+                              action.payload.filter(item => item.privat === state.filter)
             }
         case 'NOTE_DELETED':
             return {
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action) => {
                 notes: state.notes.filter(item => item.id !== action.payload),
                 filtredNotes: state.filter === 'all' ?
                               state.notes.filter(item => item.id !== action.payload) : 
-                              state.notes.filter(item => item.id !== action.payload && item.private === state.filter)
+                              state.notes.filter(item => item.id !== action.payload && item.privat === state.filter)
             }
         case 'NOTE_CREATED':
             return {
@@ -33,7 +33,7 @@ const reducer = (state = initialState, action) => {
                 notes: [...state.notes, action.payload],
                 filtredNotes: state.filter === 'all' ? 
                               [...state.notes, action.payload] : 
-                              [...state.notes, action.payload].filter(item => item.private === state.filter)
+                              [...state.notes, action.payload].filter(item => item.privat === state.filter)
             }
         case 'NOTES_FILTRED': 
             return {
@@ -42,7 +42,7 @@ const reducer = (state = initialState, action) => {
                 filter: action.payload,
                 filtredNotes: action.payload === 'all' ?
                               state.notes : 
-                              state.notes.filter(item => item.private === action.payload)
+                              state.notes.filter(item => item.privat === action.payload)
             }
         case 'NOTES_LOADING': 
             return {

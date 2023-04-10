@@ -20,7 +20,7 @@ const NotesAddForm = () => {
             id: notes.length + 1,
             title: noteTitle, 
             article: noteArticle, 
-            private: notePrivate
+            privat: notePrivate
         }
 
         request("http://localhost:3001/notes", 'POST', JSON.stringify(newNote))
@@ -74,7 +74,7 @@ const NotesAddForm = () => {
                     onChange={e => setNotePrivate(e.target.value)}
                     >
                     <option>-</option>
-                    <option>private</option>
+                    <option>privat</option>
                     <option>public</option>
                     <option>friends</option>
                 </select>
